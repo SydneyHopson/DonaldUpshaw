@@ -13,13 +13,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Global metadata for SEO + tab info
 export const metadata: Metadata = {
   title: "Sydney L. Hopson Jr. | Full-Stack Developer Portfolio",
   description:
-    "Explore the work of Sydney L. Hopson Jr., a Full-Stack Developer and Systems Architect building scalable, accessible, and secure platforms for public sector, healthcare, and enterprise clients.",
+    "Explore the portfolio of Sydney L. Hopson Jr., a Full-Stack Developer and Systems Architect creating scalable, secure platforms for public sector, healthcare, and civic clients.",
   icons: {
-    icon: "/favicon.ico", // modern PNG favicon
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
   },
 };
 
