@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "Explore the work of Sydney L. Hopson Jr., a Full-Stack Developer and Systems Architect building scalable, accessible, and secure platforms for public sector, healthcare, and enterprise clients.",
   icons: {
-    icon: "/favicon.png", // modern PNG favicon
+    icon: "/favicon.ico", // modern PNG favicon
   },
 };
 
