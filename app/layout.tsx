@@ -1,3 +1,5 @@
+// app/layout.tsx
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -19,10 +21,10 @@ export const metadata: Metadata = {
     "Resume and experience portfolio of Sydney L. Hopson Jr., a certified forklift operator and logistics clerk based in Stone Mountain, GA. Trained in OSHA safety, inventory management, and warehouse systems.",
   icons: {
     icon: [
-      { url: "/images/logo2.png", type: "image/png" },
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
     ],
-    apple: "/images/logo2.png",
+    apple: "/favicon.png",
   },
 };
 
