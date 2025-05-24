@@ -14,14 +14,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sydney L. Hopson Jr. | Full-Stack Developer Portfolio",
+  title: "Sydney L. Hopson Jr. | Certified Forklift Operator & Logistics Clerk",
   description:
-    "Explore the portfolio of Sydney L. Hopson Jr., a Full-Stack Developer and Systems Architect creating scalable, secure platforms for public sector, healthcare, and civic clients.",
+    "Resume and experience portfolio of Sydney L. Hopson Jr., a certified forklift operator and logistics clerk based in Stone Mountain, GA. Trained in OSHA safety, inventory management, and warehouse systems.",
   icons: {
     icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/images/logo2.png", type: "image/png" },
       { url: "/favicon.png", type: "image/png" },
     ],
+    apple: "/images/logo2.png",
   },
 };
 

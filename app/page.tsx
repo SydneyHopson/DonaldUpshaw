@@ -2,21 +2,23 @@ import Contact from "./sections/Contact";
 import Education from "./sections/Education";
 import Experience from "./sections/Experience";
 import Hero from "./sections/Hero";
-import Projects from "./sections/Projects";
-import TechStack from "./sections/TechStack";
-
-
+import Skills from "./sections/Skills";
+import Header from "./sections/Header";
+import Endorsements from "./sections/Endorsements";
+import Footer from "./sections/Footer";
 
 export default function HomePage() {
   return (
-    <main className="...">
+    <main className="min-h-screen bg-white text-gray-900">
+      <Header />
       <Hero />
-      <TechStack />
-      <Projects />
+      <Skills />
       <Experience />
       <Education />
+      <Endorsements />
       <Contact />
-      {/* etc */}
+      <Footer />
+      
     </main>
   );
 }

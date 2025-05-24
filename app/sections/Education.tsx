@@ -1,172 +1,169 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { motion } from "framer-motion";
-import Modal from "../components/ui/Modal";
+import { GraduationCap, ShieldCheck, X } from "lucide-react";
 import Image from "next/image";
-import {
-  GraduationCap,
-  Laptop,
-  BookOpen,
-  ShieldCheck,
-} from "lucide-react";
 
-// Modal types
-type ModalKey = "degree" | "bloom" | null;
-
-interface EducationItem {
+type EducationItem = {
   title: string;
-  subtitle: string;
-  date: string;
-  icon: React.ComponentType<{ className?: string }>;
-  action?: ModalKey;
-  link?: string;
-}
+  institution: string;
+  location: string;
+  dates: string;
+  certImage?: string;
+  badgeType?: "credly";
+  icon: ReactNode;
+};
+
+const education: EducationItem[] = [
+  {
+    title: "B.S. in Production & Computer Science",
+    institution: "Full Sail University",
+    location: "Online / Winter Park, FL",
+    dates: "2015 – 2018",
+    certImage: "/images/full-sail-diploma-rotated.png",
+    icon: <GraduationCap className="text-blue-600 mb-3 mx-auto" size={32} />,
+  },
+  {
+    title: "Web & Software Development Certificate",
+    institution: "BloomTech (Lambda School)",
+    location: "Remote",
+    dates: "2023",
+    badgeType: "credly",
+    icon: <GraduationCap className="text-blue-600 mb-3 mx-auto" size={32} />,
+  },
+  {
+    title: "Forklift Operations Training Program",
+    institution: "Goodwill of North Georgia via B&W Fork Training Center",
+    location: "Decatur, GA",
+    dates: "May 2025 – Present",
+    certImage: "/certs/forklift-training.webp",
+    icon: <GraduationCap className="text-blue-600 mb-3 mx-auto" size={32} />,
+  },
+  {
+    title: "OSHA 10 General Industry Training",
+    institution: "Authorized Provider",
+    location: "Decatur, GA",
+    dates: "Completed 2024",
+    certImage: "/certs/osha-cert.webp",
+    icon: <ShieldCheck className="text-blue-600 mb-3 mx-auto" size={32} />,
+  },
+  {
+    title: "CPR & First Aid Certification",
+    institution: "Red Cross / Goodwill",
+    location: "Decatur, GA",
+    dates: "Valid through 2026",
+    certImage: "/certs/cpr-cert.webp",
+    icon: <ShieldCheck className="text-blue-600 mb-3 mx-auto" size={32} />,
+  },
+];
+
+const certPills = [
+  "60+ Hours of Equipment Training",
+  "Certified: Stand Up, Sit Down, Reach Truck, Electric Pallet Jack",
+];
 
 export default function Education() {
-  const [showModal, setShowModal] = useState<ModalKey>(null);
+  const [modalImage, setModalImage] = useState<string | null>(null);
 
   useEffect(() => {
-    if (showModal === "bloom") {
+    if (modalImage === "bloom") {
       const script = document.createElement("script");
-      script.src = "//cdn.credly.com/assets/utilities/embed.js";
+      script.src = "https://cdn.credly.com/assets/utilities/embed.js";
       script.async = true;
-      document.body.appendChild(script);
-      return () => {
-        document.body.removeChild(script);
-      };
+      document.getElementById("credly-container")?.appendChild(script);
     }
-  }, [showModal]);
-
-  const items: EducationItem[] = [
-    {
-      title: "Full Sail University",
-      subtitle: "B.S. – Production & Computer Science",
-      date: "2015 – 2018",
-      icon: GraduationCap,
-      action: "degree",
-    },
-    {
-      title: "BloomTech University",
-      subtitle: "Web & Software Developer Certificate",
-      date: "2023",
-      icon: Laptop,
-      action: "bloom",
-    },
-    {
-      title: "ITT Tech (Legacy)",
-      subtitle: "Certificate listed on record. Physical copy unavailable.",
-      date: "Archived",
-      icon: ShieldCheck,
-    },
-    {
-      title: "Skillsoft Certifications",
-      subtitle: "30+ micro-certifications in JS, APIs, QA, and DevOps.",
-      date: "2023",
-      icon: BookOpen,
-      link: "https://skillsoft.digitalbadges.skillsoft.com/profile/sydneyhopson389842/wallet",
-    },
-    {
-      title: "Ongoing Oracle Study",
-      subtitle: "Self-guided cloud infra + CI/CD mastery.",
-      date: "Present",
-      icon: BookOpen,
-    },
-  ];
+  }, [modalImage]);
 
   return (
-    <section className="w-full bg-white text-black py-32 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 tracking-tight text-black">
+    <section id="education" className="w-full bg-white py-20 px-6 sm:px-10 md:px-20 text-gray-900 relative">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-blue-700 mb-14">
           Education & Certifications
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
-          {items.map(({ title, subtitle, date, icon: Icon, action, link }, idx) => (
+        <div className="overflow-x-auto flex gap-6 pb-4 snap-x snap-mandatory scroll-smooth">
+          {education.map((item, index) => (
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 40 }}
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="group bg-black text-white rounded-2xl p-6 h-[300px] shadow-xl hover:shadow-[0_0_40px_rgba(0,255,180,0.3)] border border-white/10 transition-all duration-300 flex flex-col justify-between"
-
+              className="snap-center flex-shrink-0 bg-gray-100 w-80 md:w-[30rem] lg:w-[36rem] rounded-xl p-6 text-center shadow hover:shadow-lg transition-all"
             >
-              <div>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-white/10 rounded-full transition-all group-hover:shadow-md group-hover:bg-emerald-600/30">
-                    <Icon className="w-7 h-7 text-white group-hover:text-emerald-300 transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold leading-tight">
-                      {title}
-                    </h3>
-                    <span className="text-xs text-gray-400 italic">{date}</span>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-300 leading-snug">{subtitle}</p>
-              </div>
+              {item.icon}
+              <h3 className="text-lg font-semibold text-blue-800">{item.title}</h3>
+              <p className="text-sm text-gray-500">{item.institution}</p>
+              <p className="text-sm text-gray-500">{item.location}</p>
+              <p className="text-sm text-gray-500 mt-1">{item.dates}</p>
 
-              {action && (
-                <div className="flex justify-center mt-4">
-                  <button
-                    onClick={() => setShowModal(action)}
-                    className="text-xs bg-white/10 hover:bg-emerald-500/20 text-white px-4 py-1.5 rounded-full transition"
-                  >
-                    {action === "degree" ? "View Degree" : "View Certificate"}
-                  </button>
-                </div>
-              )}
-
-              {!action && link && (
-                <div className="flex justify-center mt-4">
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs bg-white/10 hover:bg-emerald-500/20 text-white px-4 py-1.5 rounded-full transition text-center"
-                  >
-                    View Credentials
-                  </a>
-                </div>
-              )}
+              <button
+                onClick={() => setModalImage(item.badgeType === "credly" ? "bloom" : item.certImage ?? "")}
+                className="mt-4 inline-block text-sm text-white bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition"
+              >
+                View Certificate
+              </button>
             </motion.div>
           ))}
         </div>
 
-        <p className="text-center text-xs text-gray-500 mt-10 italic">
-          Additional certifications and legacy records available upon request.
-        </p>
+        <div className="text-center mt-10">
+          <h4 className="text-lg font-semibold text-gray-700 mb-4">
+            Additional Certifications
+          </h4>
+          <ul className="flex flex-wrap justify-center gap-3 text-sm text-gray-600">
+            {certPills.map((cert, i) => (
+              <li
+                key={i}
+                className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium whitespace-nowrap"
+              >
+                {cert}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* Full Sail Degree Modal */}
-      <Modal isOpen={showModal === "degree"} onClose={() => setShowModal(null)}>
-        <div className="w-full flex justify-center">
-          <Image
-            src="/images/full-sail-diploma-rotated.png"
-            alt="Full Sail Degree"
-            width={1000}
-            height={600}
-            className="rounded-lg object-contain w-full h-auto"
-          />
+      {/* Image Modal */}
+      {modalImage && modalImage !== "bloom" && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4">
+          <div className="bg-white rounded-xl overflow-hidden relative max-w-2xl w-full">
+            <button
+              onClick={() => setModalImage(null)}
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+            >
+              <X size={24} />
+            </button>
+            <Image
+              src={modalImage}
+              alt="Certificate Preview"
+              width={800}
+              height={600}
+              className="w-full h-auto object-contain"
+            />
+          </div>
         </div>
-      </Modal>
+      )}
 
-      {/* BloomTech Credly Embed */}
-      <Modal isOpen={showModal === "bloom"} onClose={() => setShowModal(null)}>
-        <div className="w-full flex justify-center">
-          <div
-            className="credly-badge"
-            dangerouslySetInnerHTML={{
-              __html: `
-                <div data-iframe-width="350" data-iframe-height="300" data-share-badge-id="03580790-6f71-484d-ae76-bd93a9ef3151" data-share-badge-host="https://www.credly.com"></div>
-                <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-              `,
-            }}
-          />
+      {/* BloomTech Credly Badge Modal */}
+      {modalImage === "bloom" && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4">
+          <div className="bg-white rounded-xl overflow-hidden relative max-w-xl w-full p-6">
+            <button
+              onClick={() => setModalImage(null)}
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+            >
+              <X size={24} />
+            </button>
+            <div className="w-full flex justify-center">
+              <div id="credly-container">
+                <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="03580790-6f71-484d-ae76-bd93a9ef3151" data-share-badge-host="https://www.credly.com"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </Modal>
+      )}
     </section>
   );
 }

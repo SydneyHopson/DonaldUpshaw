@@ -1,82 +1,105 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Briefcase,
-  Server,
-  Globe,
-  Laptop,
-  GraduationCap,
-} from "lucide-react"; // using ShadCN/Lucide icons
+import { Briefcase, CalendarDays, MapPin } from "lucide-react";
 
-const experiences = [
+const jobs = [
   {
-    title: "GXO Logistics (Google Client) – IT Systems & Operations",
-    description:
-      "Supported logistics infrastructure and hardware for a Google-operated warehouse. Oversaw server rack installs, asset scanning systems, networking setups, and emergency technical response. Worked closely with corporate Google IT standards.",
-    icon: Server,
-    date: "2022 – 2024",
+    title: "Shipping Clerk / Forklift Operator",
+    company: "GXO Logistics",
+    location: "Lithia Springs, GA",
+    dates: "June 2022 – February 2024",
+    responsibilities: [
+      "Promoted for leadership and reliability in high-volume DECOM operations.",
+      "Operated reach trucks and stand-up forklifts to manage serialized tech inventory.",
+      "Processed shipping documents and outbound prep with zero error rate.",
+      "Maintained OSHA-compliant zones and cross-trained team members.",
+    ],
+    skillsUsed: [
+      "GWMS", "SAP", "BOL processing", "Inventory accuracy (100%)",
+      "Reverse logistics", "Forklift safety protocols",
+    ],
   },
   {
-    title: "Reign Mobile LLC – Founder & Lead Developer",
-    description:
-      "Led development of government and civic platforms using modern tech stacks. Oversaw full product lifecycles, implemented APIs, and deployed scalable platforms used by thousands. Focused on secure authentication, CMS workflows, and real-time dashboards.",
-    icon: Globe,
-    date: "Present • Active",
-  },
-  {
-    title: "Freelance Developer – Government & Real Estate",
-    description:
-      "Built ADA-compliant websites for municipalities, energy agencies, and real estate firms. Integrated WordPress, Sanity CMS, and CRM systems for non-technical clients. Delivered branded, accessible, and SEO-optimized builds with rapid turnaround.",
-    icon: Laptop,
-    date: "Present • Active",
-  },
-  {
-    title: "ITT Tech – Software Intern (R&D)",
-    description:
-      "Contributed to R&D lab tooling and code refactoring at ITT Tech during early career. Supported classroom apps, file-sharing utilities, and assisted instructors with tech support and student system builds.",
-    icon: GraduationCap,
-    date: "Early Career",
-  },
-  {
-    title: "Full-Stack Intern – Self-Led Projects & E-Commerce Builds",
-    description:
-      "Engineered e-commerce and client dashboard platforms from scratch. Used Clerk for auth, Zustand for state, and Stripe for checkout. Emphasized modular architecture, performance tuning, and pixel-perfect frontend delivery.",
-    icon: Briefcase,
-    date: "Present • Active",
+    title: "Receiving Clerk / Order Picker",
+    company: "Central Garden & Pet",
+    location: "Atlanta, GA",
+    dates: "March 2024 – February 2025",
+    responsibilities: [
+      "Operated sit-down forklifts, reach trucks, and pallet jacks in tight spaces.",
+      "Used RF scanners and Vocallect with 98%+ order picking accuracy.",
+      "Performed cycle counts and managed zone organization during peak seasons.",
+      "Prepped outbound shipments and verified incoming stock for accuracy.",
+    ],
+    skillsUsed: [
+      "Vocallect system", "RF scanners", "Cycle counts", "Order staging",
+      "Zone clarity protocols",
+    ],
   },
 ];
 
 export default function Experience() {
   return (
-    <section className="w-full bg-black text-white py-32 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 tracking-tight">
-          Experience
+    <section id="experience" className="w-full bg-gray-50 py-20 px-6 sm:px-10 md:px-20 text-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-blue-700 mb-14">
+          Work Experience
         </h2>
 
-        <div className="space-y-20">
-          {experiences.map(({ title, description, icon: Icon, date }, idx) => (
+        <div className="space-y-12">
+          {jobs.map((job, index) => (
             <motion.div
-              key={idx}
+              key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-white/5 rounded-2xl p-6 md:p-8 shadow-lg transition duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-1 hover:ring-white/20 hover:scale-[1.015]"
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all p-8 md:p-10 border border-blue-100 flex flex-col items-center text-center"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <div className="p-2 bg-white/10 rounded-full">
-                    <Icon className="w-5 h-5 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{title}</h3>
-                </div>
-                <span className="text-xs text-gray-400 italic">{date}</span>
-              </div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                {description}
+              <Briefcase className="text-blue-600 mb-4" size={28} />
+              <h3 className="text-2xl font-bold text-blue-800">
+                {job.title}
+              </h3>
+              <p className="text-sm text-gray-500 font-medium">
+                {job.company}
               </p>
+              <div className="flex flex-wrap justify-center items-center gap-2 text-sm text-gray-500 mt-1 mb-6">
+                <span className="flex items-center gap-1">
+                  <MapPin size={16} />
+                  {job.location}
+                </span>
+                <span className="flex items-center gap-1">
+                  <CalendarDays size={16} />
+                  {job.dates}
+                </span>
+              </div>
+
+              <div className="mb-5 max-w-xl">
+                <h4 className="text-lg font-semibold text-gray-700 mb-2">
+                  Key Responsibilities:
+                </h4>
+                <ul className="list-disc list-inside text-gray-700 space-y-1">
+                  {job.responsibilities.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="max-w-xl">
+                <h4 className="text-lg font-semibold text-gray-700 mb-2">
+                  Tools & Skills Used:
+                </h4>
+                <ul className="flex flex-wrap justify-center gap-2 text-sm text-gray-600">
+                  {job.skillsUsed.map((skill, i) => (
+                    <li
+                      key={i}
+                      className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium whitespace-nowrap"
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           ))}
         </div>
