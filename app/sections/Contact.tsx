@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full bg-gray-50 py-20 px-6 sm:px-10 md:px-20 text-gray-900"
+      className="w-full bg-white py-20 px-6 sm:px-10 md:px-20 text-gray-900"
     >
       <div className="max-w-3xl mx-auto text-center">
         <motion.div
@@ -19,33 +19,33 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-700 mb-6">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 mb-6 drop-shadow">
             Get in Touch
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Looking for a dependable, certified warehouse professional? Let’s connect.
+            Looking for a dependable, certified warehouse professional? Let’s connect with Isaiah.
           </p>
 
           <div className="space-y-4">
             <div className="flex justify-center items-center gap-2 text-gray-800">
               <Phone size={18} />
-              <span className="text-base font-medium">770-294-1987</span>
+              <span className="text-base font-medium">689-325-1699</span>
             </div>
 
             <div className="flex justify-center items-center gap-2 text-gray-800">
               <Mail size={18} />
               <a
-                href="mailto:SydneyHopsonJr@outlook.com"
+                href="mailto:ZayKingQuan107@gmail.com"
                 className="text-base font-medium hover:underline"
               >
-                SydneyHopsonJr@outlook.com
+                ZayKingQuan107@gmail.com
               </a>
             </div>
 
             <div className="pt-6">
               <button
                 onClick={() => setShowModal(true)}
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition"
+                className="inline-flex items-center gap-2 bg-black border-2 border-blue-500 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-900 transition"
               >
                 <FileText size={18} />
                 View Resume
@@ -76,14 +76,14 @@ export default function Contact() {
               <X size={24} />
             </button>
             <iframe
-              src="/images/SydneyLHopsonJr_resume.pdf"
+              src="/images/Isaiah_Harris_Resume.pdf"
               title="Resume Preview"
               className="w-full h-full"
               frameBorder="0"
             ></iframe>
             <div className="absolute bottom-2 left-0 right-0 flex justify-center pb-3">
               <a
-                href="/images/SydneyLHopsonJr_resume.pdf"
+                href="/images/Isaiah_Harris_Resume.pdf"
                 download
                 className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
               >

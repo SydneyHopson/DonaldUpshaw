@@ -1,28 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 
 // Font setup
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const barlow = Barlow_Condensed({
+  variable: "--font-heading",
+  weight: ["500", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-sans",
+  weight: ["400", "500"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Sydney L. Hopson Jr. | Certified Forklift Operator & Logistics Clerk",
+  title: "Isaiah Harris | Certified Forklift Operator & Labor Specialist",
   description:
-    "Resume and experience portfolio of Sydney L. Hopson Jr., a certified forklift operator and logistics clerk based in Stone Mountain, GA. Trained in OSHA safety, inventory management, and warehouse systems.",
+    "Resume and experience portfolio of Isaiah Harris, a certified forklift operator and labor specialist based in Lithonia, GA. OSHA certified, skilled in warehouse operations, landscaping, HVAC, and heavy equipment handling.",
   icons: {
     icon: [
       { url: "/favicon.png", type: "image/png", sizes: "32x32" },
     ],
     apple: "/favicon.png",
   },
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -31,10 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}
-      >
+    // eslint-disable-next-line @next/next/no-page-custom-font
+    <html lang="en" className={`${barlow.variable} ${inter.variable}`}>
+      <body className="antialiased bg-white text-black font-sans">
         {children}
       </body>
     </html>

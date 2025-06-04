@@ -1,71 +1,67 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { Phone, Mail } from "lucide-react";
+import { IconForklift } from "@tabler/icons-react";
+import robot from "../../public/images/robot.png";
 
-const videoSources = [
-  "/video/forklift-1.mp4",
-  "/video/forklift-2.mp4",
-  "/video/forklift-3.mp4",
-];
-
-export default function Hero() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % videoSources.length);
-    }, 15000); // Switch video every 15 seconds
-    return () => clearInterval(interval);
-  }, []);
-
+const Hero = () => {
   return (
-    <section
-      id="hero"
-      className="relative h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] w-full flex items-center justify-center overflow-hidden text-white"
-    >
-      {/* Background video crossfade */}
-      <AnimatePresence mode="wait">
-        <motion.video
-          key={videoSources[current]}
-          src={videoSources[current]}
-          className="absolute w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5 }}
-        />
-      </AnimatePresence>
+    <section className="flex flex-col md:flex-row pt-24 md:pt-32 pb-12 px-6 md:px-16 bg-black text-white">
+      {/* Left Content */}
+      <div className="flex-1 flex flex-col justify-start items-start">
+        {/* Tagline */}
+        <div className="flex items-center bg-gradient-to-r from-blue-700 to-cyan-500 rounded-md py-1 px-3 mb-4">
+          <IconForklift className="w-5 h-5 text-cyan-200 animate-pulse" />
+          <p className="ml-2 text-sm text-white">
+            Certified Forklift Operator & General Labor Specialist
+          </p>
+        </div>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" />
-
-      {/* Foreground content with glassy blue effect */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 text-center max-w-3xl px-6 sm:px-8 py-8 sm:py-10 rounded-xl bg-blue-600/50 backdrop-blur-sm shadow-lg"
-      >
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4">
-          Sydney L. Hopson Jr.
+        {/* Name + Headline */}
+        <h1 className="text-6xl md:text-8xl font-extrabold leading-tight mb-2 tracking-tight">
+          Isaiah Harris
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl font-semibold mb-3">
-          Forklift Operator & Shipping Clerk
+        <h2 className="text-5xl md:text-6xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 mb-6">
+          Hands-On, All-In
+        </h2>
+
+        {/* Extended Description */}
+        <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
+          Seasoned professional with two decades of experience across warehouse operations, logistics, 
+          and field labor. Proficient in forklift operation, heavy machinery, HVAC systems, and landscape 
+          maintenance. OSHA 10 certified and recently trained through Goodwill of North Georgia’s safety program. 
+          Known for reliability, precision, and leadership in fast-paced environments—from distribution centers 
+          to industrial sites. Committed to excellence and ready to bring high-impact support to any team.
         </p>
-        <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-6">
-          Stone Mountain, GA • 770-294-1987 • SydneyHopsonJr@outlook.com
-        </p>
-        <p className="text-base sm:text-lg md:text-xl text-gray-100 leading-relaxed">
-          Certified in Stand Up, Sit Down, Reach Truck, and Electric Pallet Jack operation.
-          OSHA 10 and First Aid trained. Proven leader in serialized inventory, team safety,
-          and high-precision logistics using advanced warehouse systems.
-        </p>
-      </motion.div>
+
+        {/* Contact Info */}
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4 text-cyan-300" />
+            <span>689-325-1699</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4 text-cyan-300" />
+            <span>ZAYKINGQUAN107@gmail.com</span>
+          </div>
+          <p className="text-gray-400">Based in Lithonia, GA</p>
+        </div>
+      </div>
+
+      {/* Right Image */}
+      <div className="flex-1 flex justify-center items-center mt-10 md:mt-0 relative">
+        <Image
+          src={robot}
+          alt="Warehouse illustration"
+          width={500}
+          height={500}
+          className="w-full max-w-[400px] md:max-w-[500px] drop-shadow-[0_0_80px_rgba(0,212,255,0.2)]"
+          priority
+        />
+      </div>
     </section>
   );
-}
+};
+
+export default Hero;

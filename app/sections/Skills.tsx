@@ -1,106 +1,124 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import {
+  BadgeCheck,
+  HeartPulse,
+  ShieldCheck,
+  Wrench,
+  Truck,
+  Users,
+  Warehouse,
+  ClipboardList,
+} from "lucide-react";
 
 const skillSections = {
-  "✅ Equipment & Operations": {
+  "Equipment Operation & Safety": {
+    icon: Truck,
     description:
-      "Certified and experienced in safely operating major lift types with precision in high-volume environments.",
+      "Certified in multiple forklift types and trained in OSHA safety standards. Over 60 hours of hands-on training plus real-world experience.",
     items: [
-      "Certified: Stand Up, Sit Down, Reach Truck, Electric Pallet Jack",
-      "Operated forklifts in narrow aisles with zero safety incidents",
-      "Loaded and unloaded trailers with balanced weight distribution",
-      "Moved sensitive, high-value inventory with care and precision",
-      "Completed over 60 hours of hands-on equipment training",
-      "Passed practical driving tests for all major warehouse lifts",
+      "Certified: Sit Down, Stand Up, Reach Truck, Electric Pallet Jack",
+      "OSHA 10 Certified – Safety first in all operations",
+      "First Aid & CPR Certified (2025)",
+      "Operated forklifts for stocking and materials handling",
+      "Loaded/unloaded trailers and job site equipment",
+      "Performed daily equipment safety inspections",
     ],
+    icons: [Truck, ShieldCheck, HeartPulse, ClipboardList, Truck, ShieldCheck],
   },
-  "🧠 Software & Systems": {
+  "Tools & Technical Systems": {
+    icon: Wrench,
     description:
-      "Proficient in logistics and warehouse software systems for inventory control, voice picking, and digital tracking.",
+      "Experienced with HVAC systems, pipefitting tools, and job site operations including landscaping and road maintenance.",
     items: [
-      "Fluent in GWMS, WMS, SAP, and Vocellect voice-pick systems",
-      "Used RF scanners to manage serialized product inventory",
-      "Logged and labeled all shipments digitally with 100% accuracy",
-      "Processed BOLs, packing slips, and digital shipping docs",
-      "Experienced with Microsoft Excel, Outlook, and data entry systems",
-      "Comfortable with inventory systems and digital workflow platforms",
+      "17+ years of HVAC installation, repair, and maintenance",
+      "Pipe fitting experience: cutting, testing, and welding systems",
+      "Power tool operation: saws, welders, brazers, and torches",
+      "Job site prep including bobcat usage, clearing and loading",
+      "Handled job site equipment for county beautification projects",
+      "Experience with warehouse tools, scanners, and lifts",
     ],
+    icons: [Wrench, Wrench, Wrench, Wrench, Wrench, ClipboardList],
   },
-  "🛡️ Safety & Compliance": {
+  "Warehouse & Utility Work": {
+    icon: Warehouse,
     description:
-      "Trained and certified in OSHA safety, CPR, and First Aid, with a track record of zero incidents.",
+      "Hands-on experience in warehousing, order picking, general maintenance, and event setup tasks.",
     items: [
-      "OSHA 10 Certified (2024)",
-      "CPR & First Aid Certified (2025)",
-      "Performed daily forklift safety checks and zone inspections",
-      "Maintained OSHA-compliant warehouse zones at all times",
-      "Trained in emergency response and clean zone enforcement",
-      "Supported safe handling protocols for tech and fragile goods",
+      "Worked as an order picker in shipping & receiving",
+      "Loaded/unloaded trucks and organized warehouse inventory",
+      "Assisted with cleaning sidewalks and public beautification",
+      "Set up and broke down event materials and work zones",
+      "Maintained tools, vehicles, and warehouse equipment",
+      "Kept job sites clean and operational daily",
     ],
+    icons: [ClipboardList, Truck, ClipboardList, ClipboardList, Wrench, ClipboardList],
   },
-  "🤝 Teamwork & Soft Skills": {
+  "Communication & Soft Skills": {
+    icon: Users,
     description:
-      "Reliable, adaptable, and team-focused with strong communication and leadership on the warehouse floor.",
+      "Team player with strong communication, reliability, and flexibility across job types and shift needs.",
     items: [
-      "Cross-trained team members on warehouse protocols",
-      "Recognized for reliability and accuracy under pressure",
-      "Adapted quickly to seasonal spikes and high-volume workflows",
-      "Communicated clearly with leads, drivers, and teammates",
-      "Maintained professionalism and calm in fast-paced environments",
-      "Motivated and team-first in high-stakes shift work",
+      "Strong communicator with supervisors and team leads",
+      "Able to follow instructions and complete jobs with minimal oversight",
+      "Reliable and consistent across long-term projects",
+      "Adaptable between warehouse, field, and maintenance tasks",
+      "Collaborated in team environments for public works",
+      "Committed to punctuality and workplace professionalism",
     ],
-  },
-  "🧹 Warehouse Upkeep & Utility": {
-    description:
-      "Hands-on with all aspects of warehouse maintenance, equipment cleaning, and zone organization.",
-    items: [
-      "Operated ride-on floor cleaner and industrial sweeper",
-      "Mopped, swept, and organized aisles between shifts",
-      "Managed trash compactors and cardboard balers",
-      "Kept work zones stocked, clear, and ready for next shift",
-      "Followed warehouse hygiene and food safety protocols",
-      "Assisted in stock rotation, labeling, and zone staging",
-    ],
+    icons: [Users, ClipboardList, ClipboardList, ClipboardList, Users, ClipboardList],
   },
 };
 
 export default function Skills() {
   return (
-    <section id="skills" className="w-full bg-white py-16 px-6 sm:px-10 md:px-20 text-gray-900">
+    <section
+      id="skills"
+      className="w-full bg-white py-16 px-6 sm:px-10 md:px-20 text-gray-900"
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-extrabold mb-12 text-center text-blue-700">
+        <h2 className="text-4xl sm:text-5xl font-extrabold mb-12 text-center bg-gradient-to-r from-blue-700 to-cyan-500 text-transparent bg-clip-text">
           Skills & Accomplishments
         </h2>
 
-        {Object.entries(skillSections).map(([section, data]) => (
-          <div key={section} className="mb-12">
-            <h3 className="text-xl sm:text-2xl font-semibold text-center text-blue-700 mb-2">
-              {section}
-            </h3>
-            <p className="text-center text-gray-600 mb-6 max-w-3xl mx-auto px-4">
-              {data.description}
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {data.items.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  className="group flex items-start space-x-3 bg-gray-100 rounded-lg p-4 transition duration-300 shadow-sm hover:shadow-xl hover:bg-blue-50 hover:scale-[1.02]"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.02, duration: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <CheckCircle className="text-blue-600 group-hover:text-blue-800 mt-1 shrink-0 transition-colors duration-300" size={20} />
-                  <p className="text-base font-medium group-hover:text-blue-800 transition-colors duration-300">
-                    {skill}
-                  </p>
-                </motion.div>
-              ))}
+        {Object.entries(skillSections).map(([section, data]) => {
+          const Icon = data.icon;
+          return (
+            <div key={section} className="mb-20">
+              <div className="flex justify-center items-center gap-3 mb-4">
+                <Icon className="text-blue-600" size={28} />
+                <h3 className="text-2xl font-bold text-center text-gray-900">
+                  {section}
+                </h3>
+              </div>
+              <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+                {data.description}
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {data.items.map((skill, index) => {
+                  const IconInside = data.icons[index];
+                  return (
+                    <motion.div
+                      key={index}
+                      className="group flex flex-col items-center justify-center bg-black text-white border border-blue-500 rounded-xl p-5 h-[200px] sm:h-[220px] shadow-md hover:shadow-lg hover:scale-[1.03] transition-all text-center ring-2 ring-blue-500"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.02, duration: 0.4 }}
+                      viewport={{ once: true }}
+                    >
+                      <BadgeCheck className="text-blue-400 mb-2" size={22} />
+                      <IconInside className="text-cyan-400 mb-3" size={38} />
+                      <p className="text-sm font-medium leading-snug">
+                        {skill}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
