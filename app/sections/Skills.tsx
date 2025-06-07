@@ -2,13 +2,11 @@
 
 import { motion } from "framer-motion";
 import {
-  BadgeCheck,
   HeartPulse,
   ShieldCheck,
   Wrench,
   Truck,
   Users,
-  Warehouse,
   ClipboardList,
 } from "lucide-react";
 
@@ -16,58 +14,46 @@ const skillSections = {
   "Equipment Operation & Safety": {
     icon: Truck,
     description:
-      "Certified in multiple forklift types and trained in OSHA safety standards. Over 60 hours of hands-on training plus real-world experience.",
+      "Certified in forklift operation and OSHA safety protocols with recent hands-on training through Goodwill of North Georgia.",
     items: [
-      "Certified: Sit Down, Stand Up, Reach Truck, Electric Pallet Jack",
-      "OSHA 10 Certified – Safety first in all operations",
-      "First Aid & CPR Certified (2025)",
-      "Operated forklifts for stocking and materials handling",
-      "Loaded/unloaded trailers and job site equipment",
-      "Performed daily equipment safety inspections",
+      { icon: Truck, text: "Certified: Sit Down, Stand Up, Reach Truck, Electric Pallet Jack" },
+      { icon: ShieldCheck, text: "OSHA 10 Certified" },
+      { icon: HeartPulse, text: "First Aid & CPR Certified (2025)" },
+      { icon: Truck, text: "Loaded and unloaded trailers using forklifts" },
+      { icon: ClipboardList, text: "Performed daily equipment safety inspections" }
     ],
-    icons: [Truck, ShieldCheck, HeartPulse, ClipboardList, Truck, ShieldCheck],
   },
-  "Tools & Technical Systems": {
+  "Machine Operation & Food Production": {
     icon: Wrench,
     description:
-      "Experienced with HVAC systems, pipefitting tools, and job site operations including landscaping and road maintenance.",
+      "Operated industrial tortilla machinery and managed food production lines at La Chiquita Tortilla in Atlanta.",
     items: [
-      "17+ years of HVAC installation, repair, and maintenance",
-      "Pipe fitting experience: cutting, testing, and welding systems",
-      "Power tool operation: saws, welders, brazers, and torches",
-      "Job site prep including bobcat usage, clearing and loading",
-      "Handled job site equipment for county beautification projects",
-      "Experience with warehouse tools, scanners, and lifts",
+      { icon: Wrench, text: "Operated machines for shaping and cooking tortillas" },
+      { icon: Wrench, text: "Mixed flour and ingredients to produce dough" },
+      { icon: Wrench, text: "Maintained packaging lines for speed and accuracy" },
+      { icon: ClipboardList, text: "Monitored corn cooking tanks during full shift operations" }
     ],
-    icons: [Wrench, Wrench, Wrench, Wrench, Wrench, ClipboardList],
   },
-  "Warehouse & Utility Work": {
-    icon: Warehouse,
+  "Sanitation & Equipment Cleaning": {
+    icon: ClipboardList,
     description:
-      "Hands-on experience in warehousing, order picking, general maintenance, and event setup tasks.",
+      "Performed thorough sanitation of food processing equipment and used forklifts to relocate cleaned machinery.",
     items: [
-      "Worked as an order picker in shipping & receiving",
-      "Loaded/unloaded trucks and organized warehouse inventory",
-      "Assisted with cleaning sidewalks and public beautification",
-      "Set up and broke down event materials and work zones",
-      "Maintained tools, vehicles, and warehouse equipment",
-      "Kept job sites clean and operational daily",
+      { icon: ClipboardList, text: "Cleaned mixers, pipes, and prep areas in food plant" },
+      { icon: Truck, text: "Used forklifts to move heavy cleaned equipment" },
+      { icon: Wrench, text: "Sanitized cooking trays and utensils regularly" }
     ],
-    icons: [ClipboardList, Truck, ClipboardList, ClipboardList, Wrench, ClipboardList],
   },
-  "Communication & Soft Skills": {
+  "Shift Management & Customer Service": {
     icon: Users,
     description:
-      "Team player with strong communication, reliability, and flexibility across job types and shift needs.",
+      "Led overnight shifts and supported team members during busy service hours at McDonald’s in Douglasville.",
     items: [
-      "Strong communicator with supervisors and team leads",
-      "Able to follow instructions and complete jobs with minimal oversight",
-      "Reliable and consistent across long-term projects",
-      "Adaptable between warehouse, field, and maintenance tasks",
-      "Collaborated in team environments for public works",
-      "Committed to punctuality and workplace professionalism",
+      { icon: Users, text: "Managed second and overnight shifts" },
+      { icon: ClipboardList, text: "Prepared meals with team during high-volume hours" },
+      { icon: Users, text: "Maintained positive customer interactions" },
+      { icon: ClipboardList, text: "Promoted teamwork and workplace communication" }
     ],
-    icons: [Users, ClipboardList, ClipboardList, ClipboardList, Users, ClipboardList],
   },
 };
 
@@ -75,50 +61,56 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="w-full bg-white py-16 px-6 sm:px-10 md:px-20 text-gray-900"
+      className="w-full bg-neutral-900 py-20 px-6 sm:px-10 md:px-20 text-white"
     >
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-extrabold mb-12 text-center bg-gradient-to-r from-blue-700 to-cyan-500 text-transparent bg-clip-text">
-          Skills & Accomplishments
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="relative inline-block text-5xl sm:text-6xl font-extrabold mb-16 text-white before:absolute before:inset-0 before:rounded before:blur-md before:bg-lime-500 before:opacity-40 before:scale-105 before:-z-10">
+          <span className="bg-gradient-to-r from-lime-500 to-lime-700 text-transparent bg-clip-text">
+            Skills & Experience
+          </span>
         </h2>
 
-        {Object.entries(skillSections).map(([section, data]) => {
-          const Icon = data.icon;
-          return (
-            <div key={section} className="mb-20">
-              <div className="flex justify-center items-center gap-3 mb-4">
-                <Icon className="text-blue-600" size={28} />
-                <h3 className="text-2xl font-bold text-center text-gray-900">
-                  {section}
-                </h3>
+        <div className="space-y-24">
+          {Object.entries(skillSections).map(([section, data], index) => {
+            const Icon = data.icon;
+            return (
+              <div key={index} className="flex flex-col items-center">
+                <div className="flex flex-col items-center mb-6 max-w-2xl">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Icon className="text-lime-600" size={28} />
+                    <h3 className="text-2xl font-semibold text-white">
+                      {section}
+                    </h3>
+                  </div>
+                  <p className="relative inline-block text-sm md:text-base px-4 py-2 rounded-xl bg-white/10 backdrop-blur drop-shadow-[0_0_8px_rgba(132,204,22,0.4)]">
+                    <span className="relative z-10 text-gray-100">
+                      {data.description}
+                    </span>
+                  </p>
+                </div>
+
+                <ul className="space-y-4 max-w-3xl">
+                  {data.items.map((item, idx) => {
+                    const ItemIcon = item.icon;
+                    return (
+                      <motion.li
+                        key={idx}
+                        className="flex items-start justify-center gap-3 text-gray-200 text-sm md:text-base"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.05, duration: 0.4 }}
+                        viewport={{ once: true }}
+                      >
+                        <ItemIcon className="text-lime-500 mt-1" size={18} />
+                        <span>{item.text}</span>
+                      </motion.li>
+                    );
+                  })}
+                </ul>
               </div>
-              <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                {data.description}
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {data.items.map((skill, index) => {
-                  const IconInside = data.icons[index];
-                  return (
-                    <motion.div
-                      key={index}
-                      className="group flex flex-col items-center justify-center bg-black text-white border border-blue-500 rounded-xl p-5 h-[200px] sm:h-[220px] shadow-md hover:shadow-lg hover:scale-[1.03] transition-all text-center ring-2 ring-blue-500"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.02, duration: 0.4 }}
-                      viewport={{ once: true }}
-                    >
-                      <BadgeCheck className="text-blue-400 mb-2" size={22} />
-                      <IconInside className="text-cyan-400 mb-3" size={38} />
-                      <p className="text-sm font-medium leading-snug">
-                        {skill}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

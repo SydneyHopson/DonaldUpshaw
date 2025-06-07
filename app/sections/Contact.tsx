@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full bg-white py-20 px-6 sm:px-10 md:px-20 text-gray-900"
+      className="w-full bg-neutral-900 py-20 px-6 sm:px-10 md:px-20 text-white"
     >
       <div className="max-w-3xl mx-auto text-center">
         <motion.div
@@ -19,33 +19,36 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 mb-6 drop-shadow">
-            Get in Touch
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-center mb-6 relative inline-block before:absolute before:inset-0 before:rounded before:blur-md before:bg-lime-500 before:opacity-40 before:scale-105 before:-z-10">
+            <span className="bg-gradient-to-r from-lime-300 to-lime-600 text-transparent bg-clip-text">
+              Get in Touch
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Looking for a dependable, certified warehouse professional? Let’s connect with Isaiah.
+
+          <p className="text-lg text-gray-300 mb-8">
+            Looking for a dependable, certified warehouse professional? Let’s connect with Donald.
           </p>
 
           <div className="space-y-4">
-            <div className="flex justify-center items-center gap-2 text-gray-800">
+            <div className="flex justify-center items-center gap-2 text-gray-200">
               <Phone size={18} />
-              <span className="text-base font-medium">689-325-1699</span>
+              <span className="text-base font-medium">470-499-7949</span>
             </div>
 
-            <div className="flex justify-center items-center gap-2 text-gray-800">
+            <div className="flex justify-center items-center gap-2 text-gray-200">
               <Mail size={18} />
               <a
-                href="mailto:ZayKingQuan107@gmail.com"
+                href="mailto:donaldjupshaw@gmail.com"
                 className="text-base font-medium hover:underline"
               >
-                ZayKingQuan107@gmail.com
+                donaldjupshaw@gmail.com
               </a>
             </div>
 
             <div className="pt-6">
               <button
                 onClick={() => setShowModal(true)}
-                className="inline-flex items-center gap-2 bg-black border-2 border-blue-500 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-900 transition"
+                className="inline-flex items-center gap-2 bg-black border-2 border-lime-500 text-white px-6 py-2 rounded-full font-medium hover:bg-neutral-800 transition"
               >
                 <FileText size={18} />
                 View Resume
@@ -58,7 +61,7 @@ export default function Contact() {
       {/* Back to Top Button */}
       <a
         href="#hero"
-        className="fixed bottom-6 right-6 bg-blue-700 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition z-50"
+        className="fixed bottom-6 right-6 bg-lime-600 text-black p-3 rounded-full shadow-lg hover:bg-lime-500 transition z-50"
         aria-label="Back to top"
         title="Back to top"
       >
@@ -76,16 +79,16 @@ export default function Contact() {
               <X size={24} />
             </button>
             <iframe
-              src="/images/Isaiah_Harris_Resume.pdf"
+              src="/images/Donald_Upshaw_Resume.pdf"
               title="Resume Preview"
               className="w-full h-full"
               frameBorder="0"
             ></iframe>
             <div className="absolute bottom-2 left-0 right-0 flex justify-center pb-3">
               <a
-                href="/images/Isaiah_Harris_Resume.pdf"
+                href="/images/Donald_Upshaw_Resume.pdf"
                 download
-                className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
+                className="inline-block bg-lime-600 text-black px-4 py-2 rounded-full hover:bg-lime-500 transition"
               >
                 Download PDF
               </a>

@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a; /* Dark by default now */
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -13,17 +13,21 @@
   --font-heading: 'Barlow Condensed', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Optional: Light mode override if needed */
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background); /* ✅ use background-color instead of shorthand */
   color: var(--foreground);
   font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
 }
 
 /* Heading font style */

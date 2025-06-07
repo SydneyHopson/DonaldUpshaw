@@ -2,10 +2,10 @@
 export default function Head() {
   return (
     <>
-      <title>Isaiah Harris | Certified Forklift Operator & Labor Specialist</title>
+      <title>Donald Upshaw | Forklift Operator & Machine Specialist</title>
       <meta
         name="description"
-        content="Resume and experience portfolio of Isaiah Harris, a certified forklift operator and labor specialist based in Lithonia, GA. OSHA certified, skilled in warehouse operations, landscaping, HVAC, and heavy equipment handling."
+        content="Resume and experience portfolio of Donald Upshaw, a certified forklift and machine operator based in Decatur, GA. OSHA certified and trained in food production, warehouse safety, and heavy equipment handling."
       />
       <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       <link rel="apple-touch-icon" href="/favicon.png" />

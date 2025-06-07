@@ -9,7 +9,7 @@ import Footer from "./sections/Footer";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-neutral-900 text-white">
       <Header />
       <Hero />
       <Skills />
@@ -18,7 +18,6 @@ export default function HomePage() {
       <Endorsements />
       <Contact />
       <Footer />
-      
     </main>
   );
 }
