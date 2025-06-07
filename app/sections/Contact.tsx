@@ -32,7 +32,7 @@ export default function Contact() {
           <div className="space-y-4">
             <div className="flex justify-center items-center gap-2 text-gray-200">
               <Phone size={18} />
-              <span className="text-base font-medium">470-499-7949</span>
+              <span className="text-base font-medium">404-387-6921</span>
             </div>
 
             <div className="flex justify-center items-center gap-2 text-gray-200">
